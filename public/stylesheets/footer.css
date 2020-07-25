@@ -1,0 +1,16 @@
+/* Sticky Footer Classes */
+
+
+#sticky-footer {
+  	flex-shrink: none;
+	background: black;
+	position: fixed;
+	color: white;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+}
+.img-circle {
+	padding-top: 5px;
+	height: 50px;
+}

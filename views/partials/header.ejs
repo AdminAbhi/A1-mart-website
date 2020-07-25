@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Make site responsive on mobile/tablet -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>A1 Mart</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+		<link rel="stylesheet" href="/stylesheets/login.css">
+		<link rel="stylesheet" href="/stylesheets/footer.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+	
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-shopping-cart"></span>  A1 Mart</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="<%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+			  		<li>
+				  	<div class="dropdown">
+						<button class="dropbtn" data-toggle="modal" data-target="#basicExampleModal">Category 
+						  <i class="fa fa-caret-down"></i>
+						</button>
+						<div class="dropdown-content">
+						  <a href="#">Link 1</a>
+						  <a href="#">Link 2</a>
+						  <a href="#">Link 3</a>
+						</div>
+  					</div>  
+			  		</li>
+			  <li><img style="padding: 3px;" class="img-circle pull-right" src="https://scontent.fpat3-1.fna.fbcdn.net/v/t1.0-9/89764902_1241424009387873_9085526710757097472_o.jpg?_nc_cat=102&_nc_sid=09cbfe&_nc_ohc=_dVFHOxFZQ0AX-q_n_u&_nc_ht=scontent.fpat3-1.fna&oh=ced49a7298a50cc16940873622d57b0e&oe=5F4178E5"></li>
+			  <li><a href="https://www.facebook.com/abhiavisekkr">Abhi</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <% if(!currentUser){ %>
+                  <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Login</a></li>
+                  <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register"><span class="glyphicon glyphicon-user"></span>  Sign Up</a></li>
+              <% } else { %>
+			  		<li><a href="#"><span class="glyphicon glyphicon-user"> </span> <%= currentUser.username %></a></li>
+			  		<li style="padding: 10px;">
+						<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#basicExampleModal"><span class="glyphicon glyphicon-shopping-cart"></span> View Cart</button>
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">This feature will be available soon!</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+			  		</li>
+                  
+                  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <% } %>
+          </ul>
+        </div>
+    </div>
+</nav>
+		<div class="container">
+			<% if(error && error.length > 0){ %>
+				<div class="alert alert-danger" role="alert">
+					<%= error %>
+				</div>
+			<% } %>
+			<% if(success && success.length > 0){ %>
+			<div class="alert alert-success" role="alert">
+				<%= success %>
+			</div>	
+			<% } %>
+		</div>
+		
