@@ -6,14 +6,14 @@ var express 	= require("express"),
 	passport	= require("passport"),
 	LocalStrategy	= require("passport-local"),
 	methodOverride 	= require("method-override"),
-	Campground 	= require("./models/campground"),
+	Product 	= require("./models/product"),
 	Comment   	= require("./models/comment"),
 	seedDB  	= require("./seeds"),
 	User		= require("./models/user")
 
 // requiring routes
 var commentRoutes = require("./routes/comments"),
-	campgroundRoutes = require("./routes/campgrounds"),
+	productRoutes = require("./routes/products"),
 	indexRoutes = require("./routes/index")
 
 app.locals.moment = require('moment');
@@ -46,12 +46,12 @@ app.use(function(req, res, next){
 	res.locals.error = req.flash("error");
 	res.locals.success = req.flash("success");
 	next();
-});
+}); 
 
 
 app.use("/", indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
-app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/products", productRoutes);
+app.use("/products/:id/comments", commentRoutes);
 
 //START SERVER on PORT 3000
 //app.listen(process.env.PORT, process.env.IP, function(){

@@ -1,16 +1,16 @@
 // All the middleware goes here
-var Campground = require("../models/campground");
+var Product = require("../models/product");
 var Comment = require("../models/comment");
 var middlewareObj = {};
 
-middlewareObj.checkCampgroundOwnership = function(req, res, next){
+middlewareObj.checkProductOwnership = function(req, res, next){
 	if(req.isAuthenticated()){
-		Campground.findById(req.params.id, function(err, foundCampground){
+		Product.findById(req.params.id, function(err, foundProduct){
 			if(err){
 				res.redirect("back");
 			}else{
-				// does the user own the campground?
-				if(foundCampground.author.id.equals(req.user._id)){
+				// does the user own the product?
+				if(foundProduct.author.id.equals(req.user._id) || req.user.username == "admin"){
 					next();
 				}else{
 					res.redirect("back");
@@ -29,7 +29,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
 				res.redirect("back");
 			}else{
 				// does the user own the comment?
-				if(foundComment.author.id.equals(req.user._id)){
+				if(foundComment.author.id.equals(req.user._id) || req.user.username == "admin"){
 					next();
 				}else{
 					res.redirect("back");

@@ -3,7 +3,7 @@
 
 #sticky-footer {
   	flex-shrink: none;
-	background: black;
+	background: rgb(32, 31, 31);
 	position: fixed;
 	color: white;
   	left: 0;

@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="jumbotron jumbotron-fluid"></header>>
+		
+			<h1>Welcome to A1 Mart!</h1>
+			<p style="padding-right: 40%;">A complete family fashion store that provides its customers true value for their money.</p>
+			<p>
+				<a class="btn btn-primary btn-large" href="/products/new">Add New Product</a>
+			</p>
+		
+	</div>
+			
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+		<% products.forEach(function(product){ %>
+			<div class="col-md-3 col-sm-6">
+				<div class="thumbnail">
+					<img class="xyz" src="<%= product.image %>">
+					<div class="caption">
+						<h4><%= product.name %></h4>
+						
+					</div>
+					<p>	
+						<a href="/products/<%= product._id %>" class="btn btn-primary btn-sm pull-right">More info!</a>
+						<strong  style="color: red; font-size: 15px">Price:  Rs. <%= product.price %></strong>
+					</p>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+	<a href="/">Goto main</a>
+</div>
+
+
+<% include ../partials/footer %>

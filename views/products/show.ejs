@@ -1,0 +1,79 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<p class="lead">A1 Mart</p>
+			<div class="list-group">
+				<li class="list-group-item active"> Available Offers </li>
+				<li class="list-group-item"> 10 % Off on SBI Credit Card </li>
+				<li class="list-group-item"> 12 % Off on ICICI Debit Card</li>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="thumbnail">
+				<a class="btn btn-warning pull-right" style="margin: auto;" href="/products">Go back!</a>
+				<img class="img-responsive xxx" src="<%= product.image %>">
+				<div class="caption-full">
+					<h3 style="color: red;" class="pull-right">Rs. <%= product.price %> - only/-</h3>
+					<h3><a><%= product.name %></a></h3>
+					<!--<a class="btn btn-danger pull-right" href="#">Buy Now!</a>-->
+					<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#basicExampleModal">
+  Buy Now!
+</button>
+<!-- Modal -->
+<div class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thanks for buying this product!</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+					<p style="color: green;"><%= product.description %></p>
+					<hr>
+					<p><em style="color: red;">Seller: </em><%= product.author.username %>, <span style="color: grey;"><%= moment(product.createdAt).fromNow() %></span></p>
+					<% if((currentUser && product.author.id.equals(currentUser._id)) || (currentUser && currentUser.username == "admin")) { %>
+						<a class="btn btn-xs btn-warning" href="/products/<%= product._id %>/edit">Edit!</a>
+						<form id="delete-form" action="/products/<%= product._id %>?_method=DELETE" method="POST">
+							<button class="btn btn-xs btn-danger">Delete!</button>
+						</form>
+					<% } %>
+					<div class="text-right">
+						<a class="btn btn-success" href="/products/<%= product._id %>/comments/new">Add New Comment</a>
+					</div>
+				</div>
+			</div>
+			<div class="well">
+				<p style="text-align: center;"> All Comments </p>
+				<hr>
+				<% product.comments.forEach(function(comment){ %>
+					<div class="row">
+						<div class="col-md-12">
+							<strong><%= comment.author.username %></strong>
+							<span style="color: grey;" class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
+							<p>
+								<%= comment.text %>
+							</p>
+							<% if(currentUser && comment.author.id.equals(currentUser._id) || (currentUser && currentUser.username == "admin")) { %>
+								<a class="btn btn-xs btn-warning" href="/products/<%= product._id %>/comments/<%= comment._id %>/edit">Edit</a>
+								<form id="delete-form" action="/products/<%= product._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+								<input type="submit" class="btn btn-xs btn-danger" value="Delete">
+								</form>
+							<% } %>
+						</div>
+					</div>
+				<% }); %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<% include ../partials/footer %>

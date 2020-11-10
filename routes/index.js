@@ -29,7 +29,7 @@ router.post("/register", function(req, res){
 		}
 		passport.authenticate("local")(req, res, function(){
 			req.flash("success", "Welcome to A1 Mart " + user.username);
-			res.redirect("/campgrounds");
+			res.redirect("/products");
 		});
 	});
 });
@@ -42,7 +42,7 @@ router.get("/login", function(req, res){
 //handling login logic
 router.post("/login", passport.authenticate("local", 
 	{
-		successRedirect: "/campgrounds",
+		successRedirect: "/products",
 		failureRedirect: "/login"
 	}), 
 	function(req, res){
@@ -52,7 +52,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
 	req.logout(); 
 	req.flash("success", "Logged out!");
-	res.redirect("/campgrounds");
+	res.redirect("/products");
 });
 
 //middleware
