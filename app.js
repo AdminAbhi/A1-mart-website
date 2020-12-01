@@ -21,7 +21,7 @@ app.locals.moment = require('moment');
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
-	secret: "Once again Rusty wins...",
+	secret: "Hello abhi",
 	resave: false,
 	saveUninitialized: false
 }));
@@ -32,6 +32,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/a1mart", {
 	useNewUrlParser: true, 
@@ -61,11 +62,11 @@ app.use("/products", productRoutes);
 app.use("/products/:id/comments", commentRoutes);
 
 
-app.listen(process.env.PORT, function(){
-	console.log("Server has started at PORT", process.env.PORT);
-});
+// app.listen(process.env.PORT, function(){
+// 	console.log("Server has started at PORT", process.env.PORT);
+// });
 
 //START SERVER on PORT 3000
-// app.listen(3000, function() { 
-//   console.log('Server listening on port 3000'); 
-// });
+app.listen(3000 || process.env.PORT, function() { 
+  console.log('Server listening on port 3000'); 
+});
