@@ -67,6 +67,6 @@ app.use("/products/:id/comments", commentRoutes);
 // });
 
 //START SERVER on PORT 3000
-app.listen(3000 || process.env.PORT, function() { 
+app.listen(process.env.PORT || 3000, function() { 
   console.log('Server listening on port 3000'); 
 });
