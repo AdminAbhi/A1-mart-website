@@ -5,8 +5,6 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install_node": "npm install",
-    "heroku-postbuild": "npm run install_node",
     "start": "node app.js"
   },
   "author": "Abhi",
