@@ -34,7 +34,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/a1mart", {
+mongoose.connect('mongodb+srv://admin:Admin@a1mart.ibzry.mongodb.net/<dbname>?retryWrites=true&w=majority' , {
 	useNewUrlParser: true, 
 	useUnifiedTopology: true
 });
