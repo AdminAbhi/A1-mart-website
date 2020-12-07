@@ -52,6 +52,12 @@
 
 <img src="https://github.com/AdminAbhi/A1-mart-website/blob/master/Screenshots/product.png" width="800"/>
 
+
+## Mobile View
+
+<img src="https://github.com/AdminAbhi/A1-mart-website/blob/master/Screenshots/mobile-view.png" width="400"/>
+
+
 #### Hope you like it!
 
 ## Thanks for visiting! :)
